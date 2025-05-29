@@ -1,0 +1,41 @@
+name: Build Frontend
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Nuekit
+        run: bun install --global nuekit
+
+      - name: Build
+        run: nue build --production
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/prod
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: "Deploy Nuekit site [skip ci]"
+          user_name: "GitHub Actions"
+          user_email: "github-actions[bot]@users.noreply.github.com"
