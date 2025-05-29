@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://json.schemastore.org/nuejs-site.json
+
+globals: ["@global"]
+libs: ["@library"]
+
+view_transitions: false
+native_css_nesting: true
+inline_css: true
+sections: true
+
+title_template: "Pardon My French - {{title}}"
+og_image: /img/og_emma.png
+favicon: /img/favicon.jpg
+description: Projet Collaboratif Incongru - BAISE OUAIS ! 24/24 NON ARRETE PARTIE !
+port: 8083
+
+# OG image
+origin: https://www.pardon-my-french.fr
+og: /img/og.jpg
+
+navigation:
+
+  header:
+
+  footer:
+    - Projet Collaboratif Incongru: http://www.musiques-incongrues.net/forum/discussion/1869/projet-de-compilation-pardon-my-french-jai-toubon
+    - Contact: mailto:toubon@pardon-my-french.fr
+
+    - RSS: http://feeds.feedburner.com/pardon-my-french
+    - Youtube: https://www.youtube.com/user/PardonMyFrench2009
