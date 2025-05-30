@@ -1,12 +1,29 @@
-<ul @name="songList">
-    <li :for="chanson in chansons">
-        <h2>{chanson.contributors} - {chanson.title}</h2>
-        <audio src="https://audio.pardon-my-french.fr/{chanson.mp3_oid}" controls></audio>
-    </li>
+<div @name="songList">
+    <section :for="chanson in chansons">
+        <hr>
+        <dl>
+            <dt>Titre</dt>
+            <dd>{chanson.title}</dd>
+            <dt>Contributeurices</dt>
+            <dd>{chanson.contributors}</dd>
+            <dt>Date</dt>
+            <dd>{chanson.date}</dd>
+            <dt>Audio</dt>
+            <dd><a href="https://audio.pardon-my-french.fr/{chanson.mp3_oid}">{chanson.mp3_oid}</dd>
+            <dt>Lyrics</dt>
+            <dd>
+                <pre>{chanson.lyrics}</pre>
+            </dd>
+            <dt>Morceau original</dt>
+            <dd>
+                <a href="{chanson.original_clip_url}">{chanson.original_artist} - {chanson.original_title}</a>
+            </dd>
+        </dl>
+    </section>
 
     <script>
         constructor({ chansons }) {
             this.items = chansons.sort((a, b) => new Date(b.date) - new Date(a.date))
         }
     </script>
-</ul>
+</div>
