@@ -1,6 +1,7 @@
 <ul @name="songList">
     <li :for="chanson in chansons">
-        <a href="https://audio.pardon-my-french.fr/{chanson.mp3_oid}">{chanson.contributors} - {chanson.title}</a>
+        <h2>{chanson.contributors} - {chanson.title}</h2>
+        <audio src="https://audio.pardon-my-french.fr/{chanson.mp3_oid}" controls></audio>
     </li>
 
     <script>
